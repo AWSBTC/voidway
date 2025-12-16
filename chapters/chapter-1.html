@@ -1,38 +1,26 @@
 <!DOCTYPE html>
-<button id="theme-toggle">🌙 Dark mode</button>
-
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Chapter 1</title>
+  <title>Chapter 1 – Beginnings</title>
   <link rel="stylesheet" href="../style.css">
 </head>
-<script>
-  const toggle = document.getElementById("theme-toggle");
+<body>
+  <button id="theme-toggle">🌙 Dark mode</button>
 
-  // Load saved preference
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    toggle.textContent = "☀️ Light mode";
-  }
+  <a href="../index.html">← Back to chapters</a>
 
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-      localStorage.setItem("theme", "dark");
-      toggle.textContent = "☀️ Light mode";
-    } else {
-      localStorage.setItem("theme", "light");
-      toggle.textContent = "🌙 Dark mode";
-    }
-  });
-</script>
-
-  <body>
-  <a href="../index.html">← Back</a>
   <h1>Chapter 1 – Beginnings</h1>
 
-  <p>Your story starts here...</p>
+  <p>
+    The rain hadn’t stopped for three days.  
+    By the time the road disappeared into fog, I knew I wouldn’t be going back.
+  </p>
+
+  <p>
+    This is where your chapter text goes. Write normally using paragraphs.
+  </p>
+
+  <script src="../theme.js"></script>
 </body>
 </html>
