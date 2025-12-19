@@ -6,33 +6,54 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+
+  <!-- Dark Mode Toggle -->
   <button id="theme-toggle">🌙 Dark mode</button>
 
-  <a href="../index.html">← Back to chapters</a>
+  <!-- Navigation -->
+  <nav>
+    <a href="../index.html">← All Chapters</a>
+  </nav>
 
-  <h1>Chapter 1</h1>
+  <!-- Chapter Header -->
   <header>
-    <p class="chapter-meta">Published: {{Dec, 2025}}</p>
+    <h1>Chapter 1</h1>
+    <p class="chapter-meta">
+      Published {{Dec, 2025}}
+    </p>
   </header>
 
+  <!-- Chapter Content -->
+  <main>
+    <p>
+      {{First paragraph of your chapter goes here.}}
+    </p>
 
-  <p>
-    Coming soon...
-  </p>
+    <p>
+      {{Continue writing normally. Each paragraph is its own <p>.}}
+    </p>
 
-  <p>
-    This is where your chapter text goes. Write normally using paragraphs.
-  </p>
+    <p>
+      {{Paste your story text here.}}
+    </p>
+  </main>
 
+  <!-- Footer Navigation -->
   <footer>
     <hr>
+
     <p>
-      <a href="prologue.html">← Previous</a>
-      {{|}}
+      {{Optional author note or teaser for next chapter.}}
+    </p>
+
+    <p>
+      <a href="Prologue.html">← Previous</a>
+      |
       <a href="about.html">Next →</a>
     </p>
   </footer>
 
+  <!-- Comments Section -->
   <section id="comments">
     <h2>Comments</h2>
 
@@ -53,6 +74,8 @@
     </script>
   </section>
 
+  <!-- Dark Mode Script -->
   <script src="../theme.js"></script>
+
 </body>
 </html>
