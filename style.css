@@ -1,21 +1,31 @@
 /* =========================
-   Color Variables
+   CSS Reset (lightweight)
+   ========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   Theme Variables
    ========================= */
 
 :root {
   --bg: #ffffff;
   --text: #111111;
-  --link: #0066cc;
-  --border: #dddddd;
   --muted: #666666;
+  --border: #dddddd;
+  --link: #111111;
 }
 
 body.dark {
-  --bg: #121212;
+  --bg: #0f1115;
   --text: #e6e6e6;
-  --link: #8ab4f8;
-  --border: #333333;
-  --muted: #aaaaaa;
+  --muted: #999999;
+  --border: #2a2d34;
+  --link: #e6e6e6;
 }
 
 /* =========================
@@ -25,18 +35,23 @@ body.dark {
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: Georgia, serif;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.7;
   max-width: 720px;
-  margin: auto;
+  margin: 0 auto;
   padding: 24px;
-  line-height: 1.65;
-
-  animation: fadeIn 0.4s ease-in;
+  animation: fadeIn 0.4s ease;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  body {
-    animation: none;
+/* Subtle page load animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -44,103 +59,165 @@ body {
    Typography
    ========================= */
 
-h1, h2, h3 {
-  line-height: 1.3;
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.2em;
+}
+
+h2 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
 }
 
 p {
-  margin-bottom: 1.2em;
+  margin-bottom: 1em;
+  color: var(--text);
+}
+
+.chapter-meta {
+  color: var(--muted);
+  font-size: 0.9em;
 }
 
 /* =========================
-   Links
+   Top Navigation
    ========================= */
 
-a {
-  color: var(--link);
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.nav-right {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-button {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 0.9em;
   text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-a:hover {
-  text-decoration: underline;
+.nav-button:hover {
+  background-color: var(--border);
+  transform: translateY(-1px);
 }
 
 /* =========================
-   Buttons
+   Dark Mode Toggle
    ========================= */
 
-button {
+#theme-toggle {
   background: none;
   border: 1px solid var(--border);
-  color: var(--text);
+  border-radius: 4px;
   padding: 6px 10px;
   cursor: pointer;
+  color: var(--text);
   font-size: 0.9em;
-  margin-bottom: 1.5em;
+}
+
+#theme-toggle:hover {
+  background-color: var(--border);
 }
 
 /* =========================
-   Chapter List + Hover Animation
+   Chapter List
    ========================= */
 
 .chapter-list {
   list-style: none;
-  padding-left: 0;
   margin-top: 1em;
 }
 
 .chapter-list li {
-  margin-bottom: 0.8em;
+  margin-bottom: 0.5em;
 }
 
 .chapter-link {
-  display: inline-flex;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.chapter-link .arrow {
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--link);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .chapter-link:hover {
+  background-color: var(--border);
   transform: translateX(4px);
+}
+
+.arrow {
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .chapter-link:hover .arrow {
   opacity: 1;
-  transform: translateX(0);
-}
-
-/* Coming soon chapters */
-.coming-soon {
-  color: var(--muted);
-  font-style: italic;
-}
-
-/* Reduce motion */
-@media (prefers-reduced-motion: reduce) {
-  .chapter-link,
-  .chapter-link .arrow {
-    transition: none;
-    transform: none;
-  }
+  transform: translateX(4px);
 }
 
 /* =========================
-   Animations
+   Chapter Pages
    ========================= */
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
+main p {
+  margin-bottom: 1.2em;
+}
+
+/* =========================
+   Footer / Navigation Links
+   ========================= */
+
+footer {
+  margin-top: 3em;
+  text-align: center;
+  color: var(--muted);
+}
+
+footer a {
+  color: var(--link);
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Comments Section
+   ========================= */
+
+#comments {
+  margin-top: 3em;
+}
+
+/* =========================
+   Responsive (Mobile)
+   ========================= */
+
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .chapter-link {
+    padding: 10px;
   }
 }
