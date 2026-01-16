@@ -1,223 +1,176 @@
-/* =========================
-   CSS Reset (lightweight)
-   ========================= */
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* =========================
-   Theme Variables
-   ========================= */
-
+/* =====================================
+   Root Variables
+===================================== */
 :root {
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #666666;
-  --border: #dddddd;
-  --link: #111111;
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --muted: #555555;
+  --accent: #6c63ff;
+  --nav-bg: #f5f5f5;
+  --nav-text: #1a1a1a;
 }
 
 body.dark {
-  --bg: #0f1115;
-  --text: #e6e6e6;
-  --muted: #999999;
-  --border: #2a2d34;
-  --link: #e6e6e6;
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --muted: #aaaaaa;
+  --accent: #9d80ff;
+  --nav-bg: #1f1f1f;
+  --nav-text: #e0e0e0;
 }
 
-/* =========================
-   Base Layout
-   ========================= */
-
+/* =====================================
+   Global Styles
+===================================== */
 body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.7;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 24px;
-  animation: fadeIn 0.4s ease;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Subtle page load animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-/* =========================
-   Typography
-   ========================= */
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.2em;
+a:hover {
+  color: darken(var(--accent), 10%);
 }
 
-h2 {
-  margin-top: 2em;
-  margin-bottom: 0.5em;
-}
-
-p {
-  margin-bottom: 1em;
-  color: var(--text);
-}
-
-.chapter-meta {
-  color: var(--muted);
-  font-size: 0.9em;
-}
-
-/* =========================
+/* =====================================
    Top Navigation
-   ========================= */
-
+===================================== */
 .top-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2em;
+  padding: 0.8em 1em;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.nav-right {
-  display: flex;
-  gap: 12px;
-}
-
-.nav-button {
-  padding: 6px 10px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text);
-  font-size: 0.9em;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.nav-button:hover {
-  background-color: var(--border);
-  transform: translateY(-1px);
-}
-
-/* =========================
-   Dark Mode Toggle
-   ========================= */
-
-#theme-toggle {
+.nav-left button,
+.nav-right a {
   background: none;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 6px 10px;
+  border: none;
   cursor: pointer;
-  color: var(--text);
-  font-size: 0.9em;
+  font-size: 1em;
+  margin-left: 1em;
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
 }
 
-#theme-toggle:hover {
-  background-color: var(--border);
+.nav-left button:hover,
+.nav-right a:hover {
+  background-color: var(--accent);
+  color: #fff;
 }
 
-/* =========================
+/* =====================================
+   Headers
+===================================== */
+h1, h2, h3 {
+  margin: 1em 0 0.5em 0;
+}
+
+p {
+  margin: 0.5em 0 1em 0;
+}
+
+/* =====================================
    Chapter List
-   ========================= */
-
-.chapter-list {
+===================================== */
+.chapter-list,
+.art-list {
   list-style: none;
-  margin-top: 1em;
+  padding: 0;
+  margin: 0;
 }
 
-.chapter-list li {
-  margin-bottom: 0.5em;
+.chapter-list li,
+.art-list li {
+  margin-bottom: 1em;
 }
 
 .chapter-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
+  padding: 0.8em 1em;
   border-radius: 6px;
-  text-decoration: none;
-  color: var(--link);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  background-color: var(--nav-bg);
+  color: var(--text-color);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .chapter-link:hover {
-  background-color: var(--border);
-  transform: translateX(4px);
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.arrow {
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+.chapter-link .arrow {
+  font-weight: bold;
 }
 
-.chapter-link:hover .arrow {
-  opacity: 1;
-  transform: translateX(4px);
+/* =====================================
+   Comic / Art Styles
+===================================== */
+.comic-container {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
 }
 
-/* =========================
-   Chapter Pages
-   ========================= */
-
-main p {
-  margin-bottom: 1.2em;
+.comic-image {
+  display: block;
+  max-width: 100%;
+  margin: 2em auto;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
 }
 
-/* =========================
-   Footer / Navigation Links
-   ========================= */
+body.dark .comic-image {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
 
-footer {
-  margin-top: 3em;
+.comic-image:hover {
+  transform: scale(1.02);
+}
+
+.comic-caption {
   text-align: center;
+  font-size: 0.9em;
   color: var(--muted);
+  margin-top: 0.3em;
+  margin-bottom: 1.5em;
+  font-style: italic;
 }
 
-footer a {
-  color: var(--link);
-  text-decoration: none;
-  margin: 0 6px;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* =========================
-   Comments Section
-   ========================= */
-
-#comments {
-  margin-top: 3em;
-}
-
-/* =========================
-   Responsive (Mobile)
-   ========================= */
-
+/* =====================================
+   Responsive
+===================================== */
 @media (max-width: 600px) {
-  body {
-    padding: 16px;
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  h1 {
-    font-size: 2rem;
+  .nav-right {
+    margin-top: 0.5em;
   }
 
   .chapter-link {
-    padding: 10px;
+    font-size: 0.95em;
+    padding: 0.6em 0.8em;
   }
 }
