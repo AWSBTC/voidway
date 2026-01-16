@@ -133,15 +133,15 @@ h1, h2, h3 {
    Comic / Art Styles (Webtoon-Friendly)
 ===================================== */
 .comic-container {
-  max-width: 100%;
-  width: 100%;
+  max-width: 98%;
+  width: 98%;
   margin: 2em auto;
   padding: 0 1em;
 }
 
 .comic-image {
   display: block;
-  width: 100%;      /* fills screen width */
+  width: 88%;      /* fills screen width */
   height: auto;     /* keeps aspect ratio */
   margin: 1em 0;
   border-radius: 6px;
