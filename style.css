@@ -149,6 +149,15 @@ h1, h2, h3 {
   transition: transform 0.2s ease;
 }
 
+.comic-image-natural {
+  display: block;        /* makes it a block so margin works */
+  margin: 1em auto;      /* centers horizontally + vertical spacing */
+  max-width: 600px;      /* optional: limits very wide images */
+  width: auto;           /* keeps original width */
+  height: auto;          /* keeps aspect ratio */
+}
+
+
 body.dark .comic-image {
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
