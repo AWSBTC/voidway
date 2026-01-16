@@ -7,6 +7,7 @@
 </head>
 <body>
 
+  <!-- Top Navigation -->
   <nav class="top-nav">
     <div class="nav-left">
       <button id="theme-toggle">🌙 Dark mode</button>
@@ -15,17 +16,22 @@
     <div class="nav-right">
       <a href="../art.html" class="nav-button">← Art</a>
       <a href="../index.html" class="nav-button">Home</a>
+      <a href="../chapters/about.html" class="nav-button">About</a>
+      <a href="../chapters/credits.html" class="nav-button">Credits</a>
     </div>
   </nav>
 
+  <!-- Page Header -->
   <h1>Astral</h1>
-  <p>Astral intro comic.</p>
+  <p>A short character comic.</p>
 
-  <!-- Comic Image -->
-  <img
-    src="images/AstralComic.png"
-    alt="Astral character comic"
-    class="chapter-image">
+  <!-- Comic Panel -->
+  <div class="comic-container">
+    <img src="images/AstralComic.png" 
+         alt="Astral character comic" 
+         class="comic-image">
+    <div class="comic-caption">Astral intro comic</div>
+  </div>
 
   <script src="../theme.js"></script>
 </body>
