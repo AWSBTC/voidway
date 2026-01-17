@@ -267,3 +267,20 @@ body.dark .comic-image {
   opacity: 0.6;
 }
 
+.void-page {
+  min-height: 100vh;
+  background: #0a0000;
+  color: #e0d6d6;
+}
+
+/* Red variant */
+.void-red {
+  background: radial-gradient(
+    circle at center,
+    #2a0000 0%,
+    #120000 60%,
+    #050000 100%
+  );
+}
+
+
