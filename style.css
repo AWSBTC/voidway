@@ -251,3 +251,19 @@ body.dark .comic-image {
   padding-left: 1.2em;
 }
 
+/*UNKNOWN*/
+.broken-link {
+  color: inherit;
+  text-decoration: underline dotted;
+}
+
+.void-page {
+  background: #050505;
+  color: #cfcfcf;
+}
+
+.void-whisper {
+  font-style: italic;
+  opacity: 0.6;
+}
+
