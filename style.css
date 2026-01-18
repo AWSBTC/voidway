@@ -338,6 +338,43 @@ body.dark .comic-image {
   margin-top: 1em;
 }
 
+.lore-reactions {
+  display: flex;
+  gap: 0.75em;
+  justify-content: center;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+.lore-reactions .reaction {
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--text);
+  padding: 0.4em 0.7em;
+  font-size: 0.85em;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.lore-reactions .reaction:hover {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+.lore-reactions .reaction.active {
+  opacity: 1;
+  border-color: var(--accent);
+  box-shadow: 0 0 6px rgba(255,255,255,0.15);
+}
+
+/* Optional color flavor */
+.reaction[data-reaction="corrupted"].active { color: #ff6b6b; }
+.reaction[data-reaction="canon"].active     { color: #7fd38d; }
+.reaction[data-reaction="anomaly"].active   { color: #ffd166; }
+
+
 
 
 
