@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>USS Message Boards</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="void-page void-red">
+
+  <div class="text-container">
+    <h1>???</h1>
+    <p class="void-whisper">A safe and private linked place to communicate to any of your fellow USS team members</p>
+    <p>Password</p>
+
+    <!-- Simple input puzzle -->
+    <input type="text" id="puzzle-input" placeholder="Enter code">
+    <button id="puzzle-submit">Submit</button>
+
+    <p id="puzzle-message"></p>
+  </div>
+
+  <script>
+    const submit = document.getElementById('puzzle-submit');
+    const input = document.getElementById('puzzle-input');
+    const message = document.getElementById('puzzle-message');
+
+    submit.addEventListener('click', () => {
+      const answer = input.value.toLowerCase().trim();
+      if(answer === "lavender") { // replace with your code
+        window.location.href = "exit.html"; // redirect to secret page
+      } else {
+        message.textContent = "Nothing happens…";
+      }
+    });
+  </script>
+
+</body>
+</html>
