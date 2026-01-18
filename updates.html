@@ -90,6 +90,8 @@
     const user = document.getElementById('user');
     const message = document.getElementById('puzzle-message');
 
+    let failCount = 0;
+
     submit.addEventListener('click', () => {
       const username = user.value.toLowerCase().trim();
       const key = input.value.toLowerCase().trim();
@@ -98,7 +100,13 @@
         message.textContent = "Access Granted...";
         setTimeout(() => window.location.href = "exit.html", 1000);
       } else {
-        message.textContent = "ACCESS DENIED";
+        failCount++;
+        if(failCount >= 3) {
+          message.textContent = "Too many failed attempts. Redirecting...";
+          setTimeout(() => window.location.href = "../index.html", 1500);
+        } else {
+          message.textContent = `ACCESS DENIED (${failCount}/3 attempts)`;
+        }
       }
     });
   </script>
