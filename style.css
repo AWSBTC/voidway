@@ -1,3 +1,4 @@
+
 /* =====================================
    Root Variables
 ===================================== */
@@ -281,6 +282,33 @@ body.dark .comic-image {
     #120000 60%,
     #050000 100%
   );
+}
+
+/*external links*/
+.external-links {
+  list-style: none;
+  padding: 0;
+  margin: 1.5em 0;
+}
+
+.external-links li {
+  margin: 0.6em 0;
+}
+
+.external-links a {
+  display: inline-block;
+  padding: 0.5em 0.9em;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--bg-soft);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.external-links a:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
 }
 
 
