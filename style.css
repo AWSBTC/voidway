@@ -275,24 +275,23 @@ body.dark .comic-image {
 }
 
 .arg-clue {
-  display: inline-block;
-  width: 0;       /* invisible space */
-  height: 0;
-  overflow: hidden;
-  text-decoration: none;
-  color: transparent;
+  color: transparent;       /* hides the text */
+  text-decoration: none;    /* removes underline */
+  cursor: pointer;
   position: relative;
 }
 
-.arg-clue:hover::after {
-  content: "Found the secret!";
-  color: #ff5555;
-  position: absolute;
-  left: 0;
-  top: -1.5em;
-  font-size: 0.9em;
+/* Optional: flicker on load for added ARG effect */
+.arg-clue::after {
+  content: "(I think)";
+  color: transparent;
+  animation: flicker 2s infinite;
 }
 
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { color: transparent; }
+  20%, 22%, 24%, 55% { color: #ff5555; }  /* briefly visible */
+}
 
 /* Red variant */
 .void-red {
