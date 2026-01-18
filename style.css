@@ -293,6 +293,25 @@ body.dark .comic-image {
   20%, 22%, 24%, 55% { color: #ff5555; }  /* briefly visible */
 }
 
+.arg-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* The invisible button */
+.arg-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  text-decoration: none;
+  color: transparent;
+  cursor: pointer;
+}
+
+
 /* Red variant */
 .void-red {
   background: radial-gradient(
