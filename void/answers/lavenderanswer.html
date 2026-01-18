@@ -50,6 +50,13 @@
       transition: opacity 0.4s ease;
     }
 
+    .typing {
+      font-style: italic;
+      color: #ffaa55;
+      margin: 0.3em 0;
+      opacity: 0.8;
+    }
+
     hr {
       border: 1px dashed #550000;
       margin: 1.5em 0;
@@ -92,23 +99,49 @@
     let i = 0;
 
     function showNextMessage() {
-      if(i >= messages.length) return;
+      if (i >= messages.length) return;
 
       const msg = messages[i];
-      const p = document.createElement('p');
-      p.className = msg.class + ' log-message';
-      p.innerHTML = msg.user !== 'Notice' ? `<span class="timestamp">${new Date().toLocaleTimeString()}</span> <strong>${msg.user}:</strong> ${msg.text}` : msg.text;
-      board.appendChild(p);
 
-      // Animate fade-in
-      setTimeout(() => {
-        p.style.opacity = 1;
-      }, 100);
+      // Typing indicator
+      if(msg.user !== 'Notice') {
+        const typing = document.createElement('p');
+        typing.className = 'typing';
+        typing.textContent = `${msg.user} is typing...`;
+        board.appendChild(typing);
 
-      i++;
-      // Dynamic delay based on message length
-      const delay = 800 + msg.text.length * 40 + Math.random() * 500; // longer messages take longer
-      setTimeout(showNextMessage, delay);
+        // Dynamic delay based on message length
+        const typingDelay = 500 + msg.text.length * 60 + Math.random() * 500;
+
+        setTimeout(() => {
+          board.removeChild(typing);
+
+          const p = document.createElement('p');
+          p.className = msg.class + ' log-message';
+          p.innerHTML = `<span class="timestamp">${new Date().toLocaleTimeString()}</span> <strong>${msg.user}:</strong> ${msg.text}`;
+          board.appendChild(p);
+
+          setTimeout(() => {
+            p.style.opacity = 1;
+          }, 50);
+
+          i++;
+          setTimeout(showNextMessage, 300); // small gap before next typing starts
+        }, typingDelay);
+      } else {
+        // Show notice immediately
+        const p = document.createElement('p');
+        p.className = 'notice log-message';
+        p.textContent = msg.text;
+        board.appendChild(p);
+
+        setTimeout(() => {
+          p.style.opacity = 1;
+        }, 50);
+
+        i++;
+        setTimeout(showNextMessage, 300);
+      }
     }
 
     showNextMessage();
