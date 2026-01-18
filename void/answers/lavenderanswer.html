@@ -19,42 +19,29 @@
       border-radius: 8px;
       padding: 1.5em;
       box-shadow: 0 0 20px rgba(255,0,0,0.3);
-      overflow: hidden;
     }
 
     .user {
+      color: #ff5555;
       font-weight: bold;
     }
-
-    .user1 { color: #ff5555; }
-    .user2 { color: #55ffff; }
 
     .log-message {
       margin: 0.3em 0 0.7em 0;
       line-height: 1.4;
-      opacity: 0;
-      transition: opacity 0.4s ease;
     }
 
     .timestamp {
-      font-size: 0.8em;
-      opacity: 0.6;
-      margin-right: 0.5em;
+      font-size: 0.7em;
+      opacity: 0.5;
+      display: block; /* on its own line */
+      margin-bottom: 0.2em;
     }
 
     .notice {
       font-style: italic;
       color: #ffaa55;
       margin: 1em 0;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .typing {
-      font-style: italic;
-      color: #ffaa55;
-      margin: 0.3em 0;
-      opacity: 0.8;
     }
 
     hr {
@@ -64,87 +51,59 @@
   </style>
 </head>
 <body>
-  <div class="message-board" id="board">
-    <!-- Messages will be injected by JavaScript -->
+  <div class="message-board" id="message-board">
+    <!-- Messages will populate here -->
   </div>
 
   <script>
+    const board = document.getElementById('message-board');
+
     const messages = [
-      { user: 'User 1', class: 'user user1', text: 'Have you seen the files for the new agents?' },
-      { user: 'User 2', class: 'user user2', text: 'Not rlly anything interesting.' },
-      { user: 'User 1', class: 'user user1', text: 'They all came at the exact same time and they didn’t come from their origin doors.' },
-      { user: 'User 2', class: 'user user2', text: 'Wdym?' },
-      { user: 'User 1', class: 'user user1', text: 'Its weird six ppl came at the exact same time to the millisecond maybe even the nanosecond...' },
-      { user: 'User 2', class: 'user user2', text: 'Has she looked at the files?' },
-      { user: 'User 1', class: 'user user1', text: 'Not yet she is extremely busy rn with everything and that… thing.' },
-      { user: 'User 2', class: 'user user2', text: 'Makes sense, are they transferred to a squad yet?' },
-      { user: 'User 1', class: 'user user1', text: 'Yeah we got Owyn from Squad 5 to be a new officer.' },
-      { user: 'User 2', class: 'user user2', text: 'Wow you convinced him to leave his squad he has been there for years.' },
-      { user: 'User 1', class: 'user user1', text: 'Ikr it took a while but we finally did it.' },
-      { user: 'User 2', class: 'user user2', text: 'Anyone interesting in the new squad?' },
-      { user: 'User 1', class: 'user user1', text: 'Not really same old same old although there is a girl who was the only humanoid in the universe.' },
-      { user: 'User 2', class: 'user user2', text: 'Wow… that sounds… depressing surprised she didn’t commit suicide.' },
-      { user: 'User 1', class: 'user user1', text: 'Well she is a SpiritFinder so it seems like she could see her family and probably other dead people.' },
-      { user: 'User 2', class: 'user user2', text: 'When is the last time we got a lone survivor I mean its been forever.' },
-      { user: 'User 1', class: 'user user1', text: 'Dont know it has been forever.' },
-      { user: 'User 2', class: 'user user2', text: 'Is she hot tho?' },
-      { user: 'User 1', class: 'user user1', text: '<i>User 1 disconnected</i>' },
-      { user: 'User 2', class: 'user user2', text: 'Well **** you too.' },
-      { user: 'Notice', class: 'notice', text: 'Please refrain from using profanity.' },
-      { user: 'User 2', class: 'user user2', text: 'Shut up.' },
-      { user: 'User 2', class: 'user user2', text: '<i>User 2 disconnected</i>' }
+      {user: 'User 1', class: 'user', text: 'logged on'},
+      {user: 'User 1', class: 'user', text: 'Have you seen the files for the new agents'},
+      {user: 'User 2', class: 'user', text: 'logged on'},
+      {user: 'User 2', class: 'user', text: 'Not rlly anything interesting'},
+      {user: 'User 1', class: 'user', text: 'They all came at the exact same time and they didnt come from their origin doors'},
+      {user: 'User 2', class: 'user', text: 'Wdym'},
+      {user: 'User 1', class: 'user', text: 'Its weird six ppl came at the exact same time to the millisecond maybe even the nanosecond tbh me and the team thought the sensors were buggin when it said nanosecond and they also came in the exact room AND they all have the exact same story, they found a mysterious door out in the middle of nowhere and they walked through it its a little weird'},
+      {user: 'User 2', class: 'user', text: 'Has she looked at the files'},
+      {user: 'User 1', class: 'user', text: 'Not yet she is extremely busy rn with everything and that… thing'},
+      {user: 'User 2', class: 'user', text: 'Makes sense, are they transferred to a squad yet'},
+      {user: 'User 1', class: 'user', text: 'Yeah we got Owyn from Squad 5 to be a new officer'},
+      {user: 'User 2', class: 'user', text: 'Wow you convinced him to leave his squad he has been there for years'},
+      {user: 'User 1', class: 'user', text: 'Ikr it took a while but we finally did it'},
+      {user: 'User 2', class: 'user', text: 'Anyone interesting in the new squad'},
+      {user: 'User 1', class: 'user', text: 'Not really same old same old although there is a girl who was the only humanoid in the universe'},
+      {user: 'User 2', class: 'user', text: 'Wow… that sounds… depressing surprised she didnt commit suicide'},
+      {user: 'User 1', class: 'user', text: 'Well she is a SpiritFinder so it seems like she could see her family and probably other dead people'},
+      {user: 'User 2', class: 'user', text: 'When is the last time we got a lone survivor I mean its been forever'},
+      {user: 'User 1', class: 'user', text: 'Dont know it has been forever'},
+      {user: 'User 2', class: 'user', text: 'Is she hot tho'},
+      {user: 'User 1', class: 'user', text: 'disconnected'},
+      {user: 'User 2', class: 'user', text: 'Well **** you too'},
+      {user: 'notice', class: 'notice', text: 'Notice: Please refrain from using profanity'},
+      {user: 'User 2', class: 'user', text: 'Shut up'},
+      {user: 'User 2', class: 'user', text: 'disconnected'},
     ];
 
-    const board = document.getElementById('board');
-    let i = 0;
+    // Function to simulate typing delay based on message length
+    let index = 0;
+    function showMessage() {
+      if(index >= messages.length) return;
+      const msg = messages[index];
+      const p = document.createElement('p');
+      p.className = msg.class + ' log-message';
+      p.innerHTML = `<span class="timestamp">${new Date().toLocaleTimeString()}</span><strong>${msg.user}:</strong> ${msg.text}`;
+      board.appendChild(p);
+      board.scrollTop = board.scrollHeight;
 
-    function showNextMessage() {
-      if (i >= messages.length) return;
-
-      const msg = messages[i];
-
-      // Typing indicator
-      if(msg.user !== 'Notice') {
-        const typing = document.createElement('p');
-        typing.className = 'typing';
-        typing.textContent = `${msg.user} is typing...`;
-        board.appendChild(typing);
-
-        // Dynamic delay based on message length
-        const typingDelay = 500 + msg.text.length * 60 + Math.random() * 500;
-
-        setTimeout(() => {
-          board.removeChild(typing);
-
-          const p = document.createElement('p');
-          p.className = msg.class + ' log-message';
-          p.innerHTML = `<span class="timestamp">${new Date().toLocaleTimeString()}</span> <strong>${msg.user}:</strong> ${msg.text}`;
-          board.appendChild(p);
-
-          setTimeout(() => {
-            p.style.opacity = 1;
-          }, 50);
-
-          i++;
-          setTimeout(showNextMessage, 300); // small gap before next typing starts
-        }, typingDelay);
-      } else {
-        // Show notice immediately
-        const p = document.createElement('p');
-        p.className = 'notice log-message';
-        p.textContent = msg.text;
-        board.appendChild(p);
-
-        setTimeout(() => {
-          p.style.opacity = 1;
-        }, 50);
-
-        i++;
-        setTimeout(showNextMessage, 300);
-      }
+      // Delay proportional to message length
+      const delay = Math.max(800, msg.text.length * 40);
+      index++;
+      setTimeout(showMessage, delay);
     }
 
-    showNextMessage();
+    showMessage();
   </script>
 </body>
 </html>
