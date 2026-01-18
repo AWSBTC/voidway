@@ -413,6 +413,61 @@ body.dark .comic-image {
 .reaction[data-reaction="canon"].active     { color: #7fd38d; }
 .reaction[data-reaction="anomaly"].active   { color: #ffd166; }
 
+/*login terminal*/
+.login-terminal {
+  max-width: 420px;
+  margin: 4em auto;
+  padding: 2em;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  background: rgba(10, 0, 0, 0.7);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.15);
+}
+
+.login-terminal h1 {
+  text-align: center;
+  letter-spacing: 0.15em;
+}
+
+.login-terminal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+
+.login-terminal label {
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  color: #d0a0a0;
+}
+
+.login-terminal input {
+  width: 100%;
+  padding: 0.6em;
+  background: #120000;
+  border: 1px solid #400;
+  color: #eee;
+}
+
+.login-terminal input:focus {
+  outline: none;
+  border-color: #ff5555;
+}
+
+.login-terminal button {
+  margin-top: 1em;
+  padding: 0.7em;
+  background: #220000;
+  border: 1px solid #600;
+  color: #ffcccc;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+}
+
+.login-terminal button:hover {
+  background: #330000;
+}
+
 
 
 
