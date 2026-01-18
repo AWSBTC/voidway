@@ -2,72 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Voidway — Updates</title>
-  <link rel="stylesheet" href="style.css">
+  <title>USS Message Boards</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body.void-page {
+      background: #0a0000;
+      color: #e0d6d6;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .login-container {
+      background: #120000;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,0,0,0.3);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .login-container h1 {
+      margin-bottom: 0.5em;
+      font-size: 1.5em;
+    }
+
+    .login-container p {
+      margin: 0.5em 0;
+      font-size: 0.9em;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6em;
+      margin: 0.5em 0 1em 0;
+      border-radius: 4px;
+      border: 1px solid #550000;
+      background: #1a0000;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+    }
+
+    input[readonly] {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.6em;
+      border-radius: 4px;
+      border: none;
+      background: #550000;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #puzzle-message {
+      margin-top: 1em;
+      font-style: italic;
+      opacity: 0.8;
+    }
+  </style>
 </head>
-<body>
+<body class="void-page">
 
-  <!-- Top Navigation -->
-  <nav class="top-nav">
-    <div class="nav-left">
-      <button id="theme-toggle">🌙 Dark mode</button>
-    </div>
+  <div class="login-container">
+    <h1>USS Message Boards</h1>
+    <p class="void-whisper">A secure terminal for USS personnel</p>
 
-    <div class="nav-right">
-      <a href="index.html" class="nav-button">Home</a>
-      <a href="chapters/about.html" class="nav-button">About</a>
-      <a href="art.html" class="nav-button">Art</a>
-      <a href="chapters/credits.html" class="nav-button">Credits</a>
-    </div>
-  </nav>
+    <label for="user">User ID</label>
+    <input type="text" id="user" value="username" readonly>
 
-  <!-- Page Header -->
-  <div class="text-container">
-    <h1>Website Updates</h1>
-    <p class="muted">Changelog and development notes</p>
+    <label for="puzzle-input">Access Key</label>
+    <input type="text" id="puzzle-input" placeholder="Enter code">
+
+    <button id="puzzle-submit">Login</button>
+    <p id="puzzle-message"></p>
   </div>
 
-  <!-- Updates Content -->
-  <main class="text-container">
+  <script>
+    const submit = document.getElementById('puzzle-submit');
+    const input = document.getElementById('puzzle-input');
+    const user = document.getElementById('user');
+    const message = document.getElementById('puzzle-message');
 
-    <details class="update-entry" open>
-      <summary>January 2026 (part2)</summary>
-      <ul>
-        <li>Added a fanart tab</li>
-        <li>Added artist files</li>
-        <li>Submission form for fanart is live</li>
-        <li>Added links to Youtube and KoFi in about page</li>
-        <li>
-  Finally fixed all the broken repositories 
-  (<span class="arg-wrapper">I think
-    <a href="void/puzzle.html" class="arg-button" aria-label="Secret page"></a>
-  </span>)
-</li>
+    submit.addEventListener('click', () => {
+      const username = user.value.toLowerCase().trim();
+      const key = input.value.toLowerCase().trim();
 
-    </details>
-    
-    <details class="update-entry">
-    <summary>January 2026</summary>
+      if(username === "username" && key === "lavender") {
+        message.textContent = "Access Granted...";
+        setTimeout(() => window.location.href = "exit.html", 1000);
+      } else {
+        message.textContent = "ACCESS DENIED";
+      }
+    });
+  </script>
 
-    <ul>
-      <li>Launched the Voidway website</li>
-      <li>Published the Prologue and Chapter 1</li>
-      <li>Added Dark Mode toggle</li>
-      <li>Introduced top navigation across all pages</li>
-      <li>Redesigned chapter layout for readability</li>
-      <li>Added Giscus comments to chapters and comics</li>
-      <li>Created the Art section</li>
-      <li>Added Astral’s intro comic and art showcase</li>
-      <li>Improved mobile scaling and image centering</li>
-      <li>Minor navigation fix (<a href="void/exit.html" class="broken-link" title="This link no longer works">details</a>)</li>
-
-
-    </ul>
-  </details>
-
-</main>
-
-
-  <script src="theme.js"></script>
 </body>
 </html>
