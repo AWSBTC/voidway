@@ -2,51 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>USS Secure Access</title>
+  <title>USS Message Boards</title>
   <link rel="stylesheet" href="../style.css">
+  <style>
+    body.void-page {
+      background: #0a0000;
+      color: #e0d6d6;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .login-container {
+      background: #120000;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,0,0,0.3);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .login-container h1 {
+      margin-bottom: 0.5em;
+      font-size: 1.5em;
+    }
+
+    .login-container p {
+      margin: 0.5em 0;
+      font-size: 0.9em;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6em;
+      margin: 0.5em 0 1em 0;
+      border-radius: 4px;
+      border: 1px solid #550000;
+      background: #1a0000;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+    }
+
+    input[readonly] {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.6em;
+      border-radius: 4px;
+      border: none;
+      background: #550000;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #puzzle-message {
+      margin-top: 1em;
+      font-style: italic;
+      opacity: 0.8;
+    }
+  </style>
 </head>
+<body class="void-page">
 
-<body class="void-page void-red">
+  <div class="login-container">
+    <h1>USS Message Boards</h1>
+    <p class="void-whisper">A secure terminal for USS personnel</p>
 
-  <div class="text-container login-terminal">
+    <label for="user">User ID</label>
+    <input type="text" id="user" value="username" readonly>
 
-    <h1>USS INTERNAL NETWORK</h1>
-    <p class="void-whisper">
-      Restricted communication node — clearance required
-    </p>
+    <label for="puzzle-input">Access Key</label>
+    <input type="text" id="puzzle-input" placeholder="Enter code">
 
-    <form id="login-form" autocomplete="off">
-      <label>
-        USER ID
-        <input type="text" id="user" placeholder="Enter designation">
-      </label>
-
-      <label>
-        ACCESS KEY
-        <input type="password" id="puzzle-input" placeholder="••••••••">
-      </label>
-
-      <button type="submit">AUTHORIZE</button>
-    </form>
-
-    <p id="puzzle-message" class="void-whisper"></p>
-
+    <button id="puzzle-submit">Login</button>
+    <p id="puzzle-message"></p>
   </div>
 
   <script>
-    const form = document.getElementById('login-form');
-    const password = document.getElementById('puzzle-input');
+    const submit = document.getElementById('puzzle-submit');
+    const input = document.getElementById('puzzle-input');
+    const user = document.getElementById('user');
     const message = document.getElementById('puzzle-message');
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const answer = password.value.toLowerCase().trim();
+    let failCount = 0;
 
-      if (answer === "lavender") {
-        window.location.href = "exit.html";
+    submit.addEventListener('click', () => {
+      const username = user.value.toLowerCase().trim();
+      const key = input.value.toLowerCase().trim();
+
+      if(username === "username" && key === "lavender") {
+        message.textContent = "Access Granted...";
+        setTimeout(() => window.location.href = "exit.html", 1000);
       } else {
-        message.textContent = "ACCESS DENIED";
-        password.value = "";
+        failCount++;
+        if(failCount >= 3) {
+          message.textContent = "Too many failed attempts. Redirecting...";
+          setTimeout(() => window.location.href = "../index.html", 1500);
+        } else {
+          message.textContent = `ACCESS DENIED (${failCount}/3 attempts)`;
+        }
       }
     });
   </script>
