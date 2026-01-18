@@ -28,12 +28,12 @@
 
     .user1 { color: #ff5555; }
     .user2 { color: #55ffff; }
-    .unit1 { color: #ffaa00; font-style: italic; }
 
     .log-message {
       margin: 0.3em 0 0.7em 0;
       line-height: 1.4;
       opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
     .timestamp {
@@ -47,22 +47,12 @@
       color: #ffaa55;
       margin: 1em 0;
       opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
     hr {
       border: 1px dashed #550000;
       margin: 1.5em 0;
-    }
-
-    /* Typing animation */
-    .typing {
-      display: inline-block;
-      border-right: 2px solid #e0d6d6;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
     }
   </style>
 </head>
@@ -87,7 +77,7 @@
       { user: 'User 2', class: 'user user2', text: 'Anyone interesting in the new squad?' },
       { user: 'User 1', class: 'user user1', text: 'Not really same old same old although there is a girl who was the only humanoid in the universe.' },
       { user: 'User 2', class: 'user user2', text: 'Wow… that sounds… depressing surprised she didn’t commit suicide.' },
-      { user: 'Unit 1', class: 'unit unit1', text: 'Well she is a SpiritFinder so it seems like she could see her family and probably other dead people.' },
+      { user: 'User 1', class: 'user user1', text: 'Well she is a SpiritFinder so it seems like she could see her family and probably other dead people.' },
       { user: 'User 2', class: 'user user2', text: 'When is the last time we got a lone survivor I mean its been forever.' },
       { user: 'User 1', class: 'user user1', text: 'Dont know it has been forever.' },
       { user: 'User 2', class: 'user user2', text: 'Is she hot tho?' },
@@ -116,8 +106,8 @@
       }, 100);
 
       i++;
-      // Delay before next message
-      const delay = 700 + Math.random() * 800;
+      // Dynamic delay based on message length
+      const delay = 800 + msg.text.length * 40 + Math.random() * 500; // longer messages take longer
       setTimeout(showNextMessage, delay);
     }
 
