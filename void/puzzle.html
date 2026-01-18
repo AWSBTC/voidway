@@ -2,34 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>USS Message Boards</title>
+  <title>USS Secure Access</title>
   <link rel="stylesheet" href="../style.css">
 </head>
+
 <body class="void-page void-red">
 
-  <div class="text-container">
-    <h1>???</h1>
-    <p class="void-whisper">A safe and private linked place to communicate to any of your fellow USS team members</p>
-    <p>Password</p>
+  <div class="text-container login-terminal">
 
-    <!-- Simple input puzzle -->
-    <input type="text" id="puzzle-input" placeholder="Enter code">
-    <button id="puzzle-submit">Submit</button>
+    <h1>USS INTERNAL NETWORK</h1>
+    <p class="void-whisper">
+      Restricted communication node — clearance required
+    </p>
 
-    <p id="puzzle-message"></p>
+    <form id="login-form" autocomplete="off">
+      <label>
+        USER ID
+        <input type="text" id="user" placeholder="Enter designation">
+      </label>
+
+      <label>
+        ACCESS KEY
+        <input type="password" id="puzzle-input" placeholder="••••••••">
+      </label>
+
+      <button type="submit">AUTHORIZE</button>
+    </form>
+
+    <p id="puzzle-message" class="void-whisper"></p>
+
   </div>
 
   <script>
-    const submit = document.getElementById('puzzle-submit');
-    const input = document.getElementById('puzzle-input');
+    const form = document.getElementById('login-form');
+    const password = document.getElementById('puzzle-input');
     const message = document.getElementById('puzzle-message');
 
-    submit.addEventListener('click', () => {
-      const answer = input.value.toLowerCase().trim();
-      if(answer === "lavender") { // replace with your code
-        window.location.href = "exit.html"; // redirect to secret page
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const answer = password.value.toLowerCase().trim();
+
+      if (answer === "lavender") {
+        window.location.href = "exit.html";
       } else {
-        message.textContent = "Nothing happens…";
+        message.textContent = "ACCESS DENIED";
+        password.value = "";
       }
     });
   </script>
