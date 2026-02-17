@@ -5,9 +5,9 @@
   <title>—</title>
   <link rel="stylesheet" href="../style.css">
   <style>
-    /* ===== ARG / Void Page Styling ===== */
+  
 
-    /* Red variant background with radial gradient */
+  
     .void-page.void-red {
       min-height: 100vh;
       background: radial-gradient(
@@ -21,14 +21,14 @@
       animation: voidFlicker 1.4s ease-out;
     }
 
-    /* Flicker / materialize animation */
+    /* Flicker */
     @keyframes voidFlicker {
       0% { opacity: 0; filter: blur(4px); }
       40% { opacity: 0.6; filter: blur(1px); }
       100% { opacity: 1; filter: blur(0); }
     }
 
-    /* Header feels “wrong” */
+    
     .void-page h1 {
       letter-spacing: 0.25em;
       text-transform: uppercase;
@@ -36,19 +36,19 @@
       animation: textDrift 6s infinite;
     }
 
-    /* Paragraph spacing */
+   
     .void-page p {
       line-height: 1.8;
     }
 
-    /* Whisper effect */
+   
     .void-whisper {
       color: #b35a5a;
       font-style: italic;
       opacity: 0.7;
     }
 
-    /* Tiny horizontal drift for header */
+   
     @keyframes textDrift {
       0% { transform: translateX(0); }
       50% { transform: translateX(0.5px); }
