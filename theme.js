@@ -1,6 +1,6 @@
 const toggle = document.getElementById("theme-toggle");
 
-// First visit: respect system theme
+// First time
 if (!localStorage.getItem("theme")) {
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     document.body.classList.add("dark");
