@@ -1,7 +1,5 @@
 
-/* =====================================
-   Root Variables
-===================================== */
+/* colors */
 :root {
   --bg-color: #ffffff;
   --text-color: #1a1a1a;
@@ -20,9 +18,7 @@ body.dark {
   --nav-text: #e0e0e0;
 }
 
-/* =====================================
-   Global Styles
-===================================== */
+/* Styles*/
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -43,9 +39,7 @@ a:hover {
   color: darken(var(--accent), 10%);
 }
 
-/* =====================================
-   Top Navigation
-===================================== */
+/* top section */
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -77,11 +71,9 @@ a:hover {
   color: #fff;
 }
 
-/* =====================================
-   Text Container (Reading-Friendly)
-===================================== */
+/* text */
 .text-container {
-  max-width: 700px;      /* limits line length for easier reading */
+  max-width: 700px;      
   margin: 0 auto;
   padding: 0 1em;
   line-height: 1.7;
@@ -95,9 +87,7 @@ h1, h2, h3 {
   line-height: 1.3;
 }
 
-/* =====================================
-   Chapter List
-===================================== */
+/* chapters */
 .chapter-list,
 .art-list {
   list-style: none;
@@ -130,20 +120,18 @@ h1, h2, h3 {
   font-weight: bold;
 }
 
-/* =====================================
-   Comic / Art Styles (Webtoon-Friendly)
-===================================== */
+/* art section */
 .comic-container {
-  max-width: 700px;       /* keeps comics readable on large screens */
-  width: 90%;             /* responsive for smaller screens */
-  margin: 2em auto;       /* centers horizontally */
-  padding: 0 1em;         /* small side padding */
+  max-width: 700px;       
+  width: 90%;             
+  margin: 2em auto;      
+  padding: 0 1em;        
 }
 
 .comic-image {
   display: block;
-  width: 100%;            /* fills the container width */
-  height: auto;           /* keeps aspect ratio */
+  width: 100%;           
+  height: auto;          
   margin: 1em 0;
   border-radius: 6px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
@@ -151,23 +139,23 @@ h1, h2, h3 {
 }
 
 .comic-image-natural {
-  display: block;        /* makes it a block so margin works */
-  margin: 1em auto;      /* centers horizontally + vertical spacing */
-  max-width: 600px;      /* optional: limits very wide images */
-  width: auto;           /* keeps original width */
-  height: auto;          /* keeps aspect ratio */
+  display: block;        
+  margin: 1em auto;      
+  max-width: 600px;     
+  width: auto;          
+  height: auto;          
 }
 
 .centered-image {
-  text-align: center;   /* centers inline/block children */
-  margin: 2em 0;        /* spacing above/below */
+  text-align: center;   
+  margin: 2em 0;        
 }
 
 .centered-image img {
-  display: inline-block;  /* allows centering with text-align */
-  max-width: 600px;       /* prevents oversized images */
-  width: auto;            /* natural width */
-  height: auto;           /* maintain aspect ratio */
+  display: inline-block;  
+  max-width: 600px;       
+  width: auto;           
+  height: auto;           
 }
 
 body.dark .comic-image {
@@ -187,9 +175,7 @@ body.dark .comic-image {
   font-style: italic;
 }
 
-/* =====================================
-   Responsive
-===================================== */
+/* something */
 @media (max-width: 600px) {
   .top-nav {
     flex-direction: column;
@@ -211,7 +197,7 @@ body.dark .comic-image {
   }
 }
 
-/* Optional: Slightly larger text on wide screens */
+/* Slightly larger text on wide screens */
 @media (min-width: 1024px) {
   .text-container {
     font-size: 1.1rem;
@@ -281,7 +267,7 @@ body.dark .comic-image {
   position: relative;
 }
 
-/* Optional: flicker on load for added ARG effect */
+/* flicker on load */
 .arg-clue::after {
   content: "(I think)";
   color: transparent;
@@ -295,7 +281,7 @@ body.dark .comic-image {
 
 .arg-wrapper {
   position: relative;
-  display: inline-block; /* ensures width/height wrap text */
+  display: inline-block; 
 }
 
 /* Invisible clickable button */
@@ -408,7 +394,7 @@ body.dark .comic-image {
   box-shadow: 0 0 6px rgba(255,255,255,0.15);
 }
 
-/* Optional color flavor */
+/*colors */
 .reaction[data-reaction="corrupted"].active { color: #ff6b6b; }
 .reaction[data-reaction="canon"].active     { color: #7fd38d; }
 .reaction[data-reaction="anomaly"].active   { color: #ffd166; }
